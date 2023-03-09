@@ -10,7 +10,7 @@ export const TYPES = [
 
 export const RISKS = [
   { id: 0, title: "All" },
-  { id: 1, title: "Very_high" },
+  { id: 1, title: "Very high" },
   { id: 2, title: "High" },
   { id: 3, title: "Moderate" },
   { id: 4, title: "Low" },

@@ -8,7 +8,8 @@ export const COLORS: Colors = {
   Moderate: "bg-[#FEF5E6] text-[#F99F01]",
   High: "bg-[#FFE4D9] text-[#FF4D00]",
   VeryHigh: "bg-[#FAE8E8] text-[#DF1525]",
-  Very_high: "bg-[#FAE8E8] text-[#DF1525]"
+  Very_high: "bg-[#FAE8E8] text-[#DF1525]",
+  'Very high': "bg-[#FAE8E8] text-[#DF1525]",
 };
 
 export const MENUS: Menus[] = [
@@ -588,7 +589,7 @@ export const TRENDING_LIST = [
 ];
 
 export const RISK_LEVELS = [
-  { id: 0, title: "VeryHigh" },
+  { id: 0, title: "Very high" },
   { id: 1, title: "High" },
   { id: 2, title: "Moderate" },
   { id: 3, title: "Low" },

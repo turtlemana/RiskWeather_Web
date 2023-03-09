@@ -4,6 +4,8 @@ import { COLORS } from "datas/main";
 import { IMAGES } from "datas/weather";
 import { Card } from "types/main";
 
+
+
 const Card = ({ data }: { data: Card }) => {
   const { image, name, subName, risk, maximumLoss, weatherIcon, weather } =
     data;

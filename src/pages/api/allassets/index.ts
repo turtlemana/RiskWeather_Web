@@ -66,7 +66,8 @@ const handler=async(req:any,res:any)=>{
             ${!exchg || exchg=="All" ? "" : `AND HR_ITEM_NM="${exchg}"` }
             ${!sect || sect=="All" ? "" : `AND SECT="${sect}"` }
             ${!search ? "" : `AND MATCH(al.ITEM_CD_DL, al.ITEM_ENG_NM) AGAINST("${search}" IN BOOLEAN MODE)`}
-
+           
+            ${priceOrder=="neutral" && lossOrder=="neutral" && priceChgOrder=="neutral" ? "ORDER BY VOLUME" : ""}
             ${priceOrder=="neutral" ? "" :
             priceOrder=="priceAsc" ? "ORDER BY ADJ_CLOSE ASC" : priceOrder=="priceDesc" ? "ORDER BY ADJ_CLOSE DESC" 
             : ""}
