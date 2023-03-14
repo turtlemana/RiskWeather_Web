@@ -2,9 +2,19 @@ import Image from "next/image";
 import { useState } from "react";
 
 import { RISKS, RISK_MENUS } from "datas/main";
+
+import {useRouter} from "next/router";
+import {AiOutlineGlobal} from 'react-icons/ai'
 import world from "assets/icons/main/world.svg";
 
-const WorldRiskList = () => {
+interface Props {
+  mapData:any; 
+  mapValid:any; 
+  mapSelect:any;
+  setMapSelect:any;
+}
+
+const WorldRiskList = ({mapData,mapValid,mapSelect,setMapSelect}:Props) => {
   const [index, setIndex] = useState(0);
 
   return (

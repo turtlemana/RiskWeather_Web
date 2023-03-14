@@ -60,7 +60,7 @@ const TopBar = ({search,onSearch,searchList}:Props) => {
            
             <input
               placeholder="Search"
-              className="outline-none laptop:text-sm laptop:w-full"
+              className="outline-none laptop:text-sm w-full"
               value={search}
               onChange={onSearch}
               onFocus={()=>{setSearchActive(true)}}
@@ -69,12 +69,11 @@ const TopBar = ({search,onSearch,searchList}:Props) => {
           <FaSearch className={`absolute right-5 text-gray-500`}></FaSearch>
 
           </article>
-          {resultList.length>=1 && searchActive  ? 
+          {resultList.length>=1 && searchActive ? 
           
-      <div className="absolute top-[58px]  w-[478px] max-h-[259px] bg-white z-20 py-[6px] px-5 overflow-auto customScrollBar rounded-20">
+      <div className="absolute top-[58px]  w-[478px] max-h-[259px] bg-white z-20 py-[6px] px-5 overflow-auto customScrollBar rounded-20" >
           {resultList?.map((asset:any)=>
-          <article key={asset['ITEM_ENG_NM']} onClick={()=>{router.push({pathname:`/detail/${asset['ITEM_CD_DL']}`})}}  className="flex items-center cursor-pointer">
-            
+          <article key={asset['ITEM_ENG_NM']} onMouseDown={()=>{router.push({pathname:`/detail/${asset['ITEM_CD_DL']}`})}}  className="flex items-center cursor-pointer" >
               <section className="flex items-center py-[10px] flex-1">
             <img loading="eager" src={`/images/logos/${asset['ITEM_CD_DL']}.png`} alt="logo" className="h-10 mr-3"/>
             <div>

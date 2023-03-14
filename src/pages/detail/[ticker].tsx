@@ -9,7 +9,7 @@ interface Props {
 
 const Detail: NextPage<Props> = ({ isMobile,detailData }) => {
   console.log(detailData)
-  return isMobile ? <MobileComponent /> : <WebComponent />;
+  return isMobile ? <MobileComponent /> : <WebComponent detailData={detailData}/>;
 };
 
 export default Detail;
@@ -23,8 +23,8 @@ export async function getServerSideProps(context:any) {
       fetch(`http://localhost:3000/api/detail/${context.query.ticker}`);
   // const data=JSON.stringify(res)
   console.log(res)
-  const detailData= await res.json()
-
+  const detailDat= await res.json()
+  const detailData=detailDat[0]
   return { props: {detailData} };
 
       

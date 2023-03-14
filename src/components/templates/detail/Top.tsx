@@ -6,50 +6,53 @@ import { IMAGES } from "datas/weather";
 import { WEEKLY } from "datas/detail";
 import { Card } from "types/main";
 import arrow from "assets/icons/detail/arrow.svg";
+interface Props {
+  name?:string; 
+  ticker?:string; 
+  riskLevel:string;
+  maxLoss:number;
+  price: number;
+  currency?:string;
+  priceChange?:string|number;
+  date?:string|Date;
+  weather?:string;
+  weatherExplain?:string;
+}
 
-const Top = ({ coin }: { coin: Card }) => {
-  const {
-    image,
-    name,
-    subName,
-    risk,
-    price,
-    maximumLoss,
-    weatherIcon,
-    weather,
-    date,
-  } = coin;
+
+const Top = ({ name,ticker,riskLevel,maxLoss,price,currency,priceChange,date,weather,weatherExplain }: Props) => {
+
   const [isActiveWeeklyModal, setIsActiveWeeklyModal] = useState(false);
   const [index, setIndex] = useState(0);
-
+  console.log("name",name)
   return (
     <main className="max-w-1320 mx-auto p-8 rounded-20 bg-white">
       <header className="flex">
         <section className="flex-1">
           <article className="flex gap-3 items-center mb-9">
-            <Image src={image || ""} alt="" className="w-[60px]" />
+            <img src={`/images/logos/${ticker}.png` || ""} alt="" className="w-[60px]" />
             <div className="mr-7">
               <h5 className="font-bold text-[28px] h-[32px] mb-1">{name}</h5>
-              <p className="text-gray-500">{subName}</p>
+              <p className="text-gray-500">{ticker}</p>
             </div>
             <div
-              className={`py-[6px] px-4 rounded-20 text-center ${COLORS[risk]}`}
+              className={`py-[6px] px-4 rounded-20 text-center ${COLORS[riskLevel]}`}
             >
-              <h6 className="h-5">{risk}</h6>
+              <h6 className="h-5">{riskLevel}</h6>
             </div>
           </article>
           <article className="flex items-center gap-6">
             <p className=" text-gray-500">Price</p>
-            <h6 className="text-4xl">{price?.toLocaleString()}</h6>
+            <h6 className="text-4xl">{price?.toFixed(4)}{" "}{currency}</h6>
             <p className="text-gray-500">2.99%</p>
             <div className="w-px h-[20px] bg-gray-300 mx-1 mb-1" />
             <p className="text-gray-500">Maximum loss</p>
-            <h6 className="text-4xl text-[#DF1525]">-{maximumLoss}%</h6>
+            <h6 className="text-4xl text-[#DF1525]">-{maxLoss.toFixed(4)}%</h6>
           </article>
         </section>
         <section>
           <article className="flex items-center gap-5 mb-4 relative">
-            <p className="text-[14px] text-gray-500 h-4">{date}</p>
+            <p className="text-[14px] text-gray-500 h-4">{date?.toString()}</p>
             <div
               className={
                 "flex py-2 px-2.5 rounded-20 bg-[#E6F5FF] cursor-pointer hover:bg-[#CCEAFF] min-w-[120px]"
@@ -77,8 +80,8 @@ const Top = ({ coin }: { coin: Card }) => {
             )}
           </article>
           <article className="text-center flex flex-col items-center">
-            <Image src={IMAGES[weatherIcon]} alt="" className="w-20 mb-1" />
-            <h6 className="text-sm text-gray-700">{weather}</h6>
+            <Image src={`/images/weather/${weather}.svg`} width={0}height={0} alt="" className="w-20 mb-1" />
+            <h6 className="text-sm text-gray-700">{weatherExplain}</h6>
           </article>
         </section>
       </header>
@@ -109,7 +112,7 @@ const Top = ({ coin }: { coin: Card }) => {
           </div>
           <p className="text-gray-400 ">Tail Risk</p>
           <h6 className="text-[#111111] text-xl w-full max-w-[100px]">
-            0.0004
+            {maxLoss.toFixed(4)}
           </h6>
           <div className="w-px h-4 bg-gray-300 mb-1 mx-1" />
           <p className="text-gray-400">VAR</p>
@@ -119,7 +122,7 @@ const Top = ({ coin }: { coin: Card }) => {
           <div className="w-px h-4 bg-gray-300 mb-1 mx-1" />
           <p className="text-gray-400">CVAR</p>
           <h6 className="text-[#111111] text-xl w-full max-w-[100px]">
-            0.6910
+          {maxLoss.toFixed(4)}
           </h6>
         </article>
       </section>

@@ -21,8 +21,8 @@ const Layout = ({ isMobile, children }: Props) => {
   const {data,error,isLoading, isValidating,mutate}=useSWR(search ? `/api/headerSearch?search=${search}` : null,fetcher)
   const searchList=data?[].concat(...data) : [];
   const onSearch=useCallback((e: React.ChangeEvent<HTMLInputElement>)=>{
-    const query=e.target.value
-    if(query.length>20){return}
+    const query=e?.target?.value
+    if(query?.length>20){return}
     setSearch(query)
   },[])
   useEffect(()=>{  
